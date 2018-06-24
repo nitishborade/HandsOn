@@ -1,5 +1,7 @@
 package com.nitish.app.lambda;
 
+import java.util.function.BinaryOperator;
+
 public class LamdaFunctionalInterface {
 
 	public static void main(String... args) {
@@ -10,13 +12,21 @@ public class LamdaFunctionalInterface {
 		System.out.println(calc.calculate(30d, 20d, o));
 		
 		//find the smallest operand using a ternary operator
-		Double result4 = calc.calculate(666d, 777d, (a, b) -> a > b ? b : a);
-		System.out.println(result4); //666.0 
+		Double greaterNo = calc.calculate(30d, 20d, (a, b) -> a > b ? b : a);
+		System.out.println(greaterNo); //666.0
+		
+		Integer res = calc.calculateBo(10, 20, (a, b) -> a + b);
+		System.out.println(res);
 	}
 }
 
 class Calculator {
 	public Double calculate(Double a, Double b, DoubleOperator o) {
+		return o.apply(a, b);
+	}
+	
+	// BinaryOperator predefined Functional interface
+	public <T> T calculateBo(T a, T b, BinaryOperator<T> o) {
 		return o.apply(a, b);
 	}
 }
