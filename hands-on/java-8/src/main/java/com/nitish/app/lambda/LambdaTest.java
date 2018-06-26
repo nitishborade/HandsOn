@@ -32,6 +32,12 @@ public class LambdaTest {
 		/*Greetings g = (name, time) -> message(name, time);
 		System.out.println(g.greet("Nitish", "Morning"));*/
 		
+		//Using variable and Interface 2
+		String time = "Morning";
+		//time = "Evening"; // Compiler Error, the variable is effectively final
+		Greetings ge = (name) -> System.out.println("Good " + time + " " + name);
+		ge.greet("Nitish");
+		
 	}
 	
 	/*private String message(String name, String time) {
@@ -44,7 +50,7 @@ interface Greetings {
 	// String greet();
 	
 	//2
-	//void greet(String name);
+	void greet(String name);
 	
 	// 3
 	//String greet(String name, String time);
